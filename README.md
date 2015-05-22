@@ -41,3 +41,7 @@ Install and run Tiger VNC Viewer on your Mac
 2. start Tiger VNC viewer on `localhost:5901`
 
 Run the tests on the Vagrant box and watch from Tiger VNC Viewer.
+
+## Next Steps
+
+Deploy to AWS? Digital Ocean? OpenStack?
