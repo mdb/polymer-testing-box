@@ -1,4 +1,4 @@
-# headless-monster
+# polymer-testing-box
 
 A ready-to-go headless Ubuntu box for Polymer [web-component-tester](https://github.com/Polymer/web-component-tester)
 in Chrome and Firefox headlessly via Xvfb.
