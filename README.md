@@ -1,6 +1,6 @@
 # polymer-testing-box
 
-A ready-to-go headless Ubuntu box for Polymer [web-component-tester](https://github.com/Polymer/web-component-tester)
+A ready-to-go headless Ubuntu box for running Polymer [web-component-tester](https://github.com/Polymer/web-component-tester)
 in Chrome and Firefox headlessly via Xvfb.
 
 This also provides Flash support via Google Chrome, which ships with the Flash Pepper plugin.
