@@ -18,9 +18,9 @@ Install [Vagrant](https://www.vagrantup.com) & [ansible](http://www.ansible.com)
 1. `vagrant up` to provision the box with the ansible playbook
 2. `vagrant ssh` to shell into the box
 3. `cd /vagrant` to enter the directory syncd to your host machine
-4. `git clone https://github.com/Polymer/core-ajax.git` to clone a Polymer web component
-5. `cd core-ajax`
-5. `git checkout 0.5.6` to check out an official release with passing tests
+4. `git clone https://github.com/PolymerElements/iron-ajax.git` to clone a Polymer web component
+5. `cd iron-ajax`
+5. `git checkout 1.0.4` to check out an official release with passing tests
 6. `bower install`
 7. `DISPLAY=:0 sudo wct` to run web-component-tester in Firefox & Chrome
 
