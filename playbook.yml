@@ -1,5 +1,4 @@
 ---
-
 - hosts: all
   sudo: yes
 
@@ -14,6 +13,26 @@
         repo: 'deb http://dl.google.com/linux/chrome/deb/ stable main'
         state: present
 
+    - name: import the NodeSource GPG key into apt
+      apt_key:
+        url: https://deb.nodesource.com/gpgkey/nodesource.gpg.key
+        state: present
+
+    - name: add NodeSource deb repository
+      apt_repository:
+        repo: 'deb https://deb.nodesource.com/node_4.x {{ ansible_distribution_release }} main'
+        state: present
+
+    - name: add NodeSource deb-src repository
+      apt_repository:
+        repo: 'deb-src https://deb.nodesource.com/node_4.x {{ ansible_distribution_release }} main'
+        state: present
+
+    - name: add NodeSource repository preferences
+      copy:
+        src: files/deb_nodesource_com_node.pref
+        dest: /etc/apt/preferences.d/deb_nodesource_com_node.pref
+
     - apt: "name={{ item }} state=installed update_cache=yes"
       with_items:
         - dbus-x11
@@ -22,7 +41,6 @@
         - git
         - google-chrome-stable
         - nodejs
-        - npm
         - python
         - xvfb
 
@@ -40,8 +58,8 @@
       command: npm install -g web-component-tester
 
     - name: copy xvfb init script to /etc/init.d
-      template:
-        src: "{{ playbook_dir }}/templates/xvfb"
+      copy:
+        src: files/xvfb
         dest: /etc/init.d/xvfb
         mode: 0770
 
