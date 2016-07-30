@@ -1,6 +1,8 @@
 ---
 - hosts: all
   sudo: yes
+  vars:
+    firefox_version: 46.0
 
   pre_tasks:
     - name: add Google public key to apt
@@ -20,12 +22,12 @@
 
     - name: add NodeSource deb repository
       apt_repository:
-        repo: 'deb https://deb.nodesource.com/node_4.x {{ ansible_distribution_release }} main'
+        repo: 'deb https://deb.nodesource.com/node_6.x {{ ansible_distribution_release }} main'
         state: present
 
     - name: add NodeSource deb-src repository
       apt_repository:
-        repo: 'deb-src https://deb.nodesource.com/node_4.x {{ ansible_distribution_release }} main'
+        repo: 'deb-src https://deb.nodesource.com/node_6.x {{ ansible_distribution_release }} main'
         state: present
 
     - name: add NodeSource repository preferences
@@ -37,7 +39,6 @@
       with_items:
         - dbus-x11
         - default-jre
-        - firefox
         - git
         - google-chrome-stable
         - nodejs
@@ -45,6 +46,24 @@
         - xvfb
 
   tasks:
+    - name: download Firefox
+      get_url:
+        url: "http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/{{ firefox_version }}/linux-x86_64/en-US/firefox-{{ firefox_version }}.tar.bz2"
+        dest: "/tmp/firefox-{{ firefox_version }}.tar.bz2"
+        mode: 0644
+
+    - name: Unarchive Firefox
+      unarchive:
+        src: "/tmp/firefox-{{ firefox_version }}.tar.bz2"
+        dest: /opt/
+        copy: no
+
+    - name: symlink /opt/firefox/firefox to /usr/bin/firefox
+      file:
+        src: /opt/firefox/firefox
+        dest: /usr/bin/firefox
+        state: link
+
     - name: symlink /user/bin/nodejs to /usr/bin/node
       file:
         src: /usr/bin/nodejs
