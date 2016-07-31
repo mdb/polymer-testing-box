@@ -20,9 +20,9 @@ Install [Vagrant](https://www.vagrantup.com) & [ansible](http://www.ansible.com)
 3. `cd /vagrant` to enter the directory syncd to your host machine
 4. `git clone https://github.com/PolymerElements/iron-ajax.git` to clone a Polymer web component
 5. `cd iron-ajax`
-5. `git checkout 1.0.4` to check out an official release with passing tests
+5. `git checkout 1.3.0` to check out an official release with passing tests
 6. `bower install`
-7. `DISPLAY=:0 sudo wct` to run web-component-tester in Firefox & Chrome
+7. `DISPLAY=:0 wct` to run web-component-tester in Firefox & Chrome. This can also be done via `xvfb-run wct`.
 
 ## Bonus - debug from your Mac via VNC
 
