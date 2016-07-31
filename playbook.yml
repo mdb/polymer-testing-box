@@ -70,11 +70,11 @@
         dest: /usr/bin/node
         state: link
 
-    - name: install bower
-      command: npm install -g bower
-
-    - name: install web-component-tester
-      command: npm install -g web-component-tester
+    - name: install bower and web-component-tester via npm
+      npm: "name={{ item }} global=yes"
+      with_items:
+        - bower
+        - web-component-tester
 
     - name: copy xvfb init script to /etc/init.d
       copy:
