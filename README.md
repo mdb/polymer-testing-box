@@ -40,7 +40,11 @@ Install and run Tiger VNC Viewer on your Mac
 1. `brew install Caskroom/cask/tigervnc-viewer`
 2. start Tiger VNC viewer on `localhost:5901`
 
-Run the tests on the Vagrant box and watch from Tiger VNC Viewer.
+Run the tests on the Vagrant box and watch from Tiger VNC Viewer:
+
+```
+DISPLAY=:0 wct
+```
 
 ## Next Steps
 
