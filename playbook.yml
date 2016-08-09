@@ -76,6 +76,11 @@
         - bower
         - web-component-tester
 
+    - name: configure bower
+      copy:
+        src: files/bowerrc
+        dest: /root/.bowerrc
+
     - name: copy xvfb init script to /etc/init.d
       copy:
         src: files/xvfb
