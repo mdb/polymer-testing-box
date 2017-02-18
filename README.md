@@ -22,7 +22,7 @@ Install [Vagrant](https://www.vagrantup.com) & [ansible](http://www.ansible.com)
 5. `cd iron-ajax`
 5. `git checkout 1.3.0` to check out an official release with passing tests
 6. `bower install`
-7. `DISPLAY=:0 wct` to run web-component-tester in Firefox & Chrome. This can also be done via `xvfb-run wct`.
+7. `xvfb-run wct` to run web-component-tester in Firefox & Chrome.
 
 ## Bonus - debug from your Mac via VNC
 
@@ -43,7 +43,7 @@ Install and run Tiger VNC Viewer on your Mac
 Run the tests on the Vagrant box and watch from Tiger VNC Viewer:
 
 ```
-DISPLAY=:0 wct
+DISPLAY=:0 xvfb-run wct
 ```
 
 ## Next Steps

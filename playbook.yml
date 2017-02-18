@@ -5,6 +5,10 @@
     firefox_version: 46.0
 
   pre_tasks:
+    - name: install python2
+      raw: sudo apt-get -y install python-simplejson
+
+  tasks:
     - name: add Google public key to apt
       apt_key:
         url: https://dl-ssl.google.com/linux/linux_signing_key.pub
@@ -46,7 +50,6 @@
         - python
         - xvfb
 
-  tasks:
     - name: download Firefox
       get_url:
         url: "http://ftp.mozilla.org/pub/mozilla.org/firefox/releases/{{ firefox_version }}/linux-x86_64/en-US/firefox-{{ firefox_version }}.tar.bz2"
@@ -81,14 +84,3 @@
       copy:
         src: files/bowerrc
         dest: /root/.bowerrc
-
-    - name: copy xvfb init script to /etc/init.d
-      copy:
-        src: files/xvfb
-        dest: /etc/init.d/xvfb
-        mode: 0770
-
-    - name: Start xvfb service
-      service:
-        name: xvfb
-        state: started
